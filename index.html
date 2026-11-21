@@ -19,11 +19,14 @@
       --primary-hover: #1d4ed8;
       --primary-soft: #eff6ff;
       --success: #059669;
+      --success-hover: #047857;
       --success-soft: #ecfdf5;
       --warning: #d97706;
       --warning-soft: #fffbeb;
       --danger: #dc2626;
       --danger-soft: #fef2f2;
+      --purple: #6d28d9;
+      --purple-soft: #f5f3ff;
       --radius: 16px;
       --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
     }
@@ -48,7 +51,7 @@
     }
 
     .topbar-inner {
-      max-width: 880px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 14px 20px;
       display: flex;
@@ -76,13 +79,13 @@
     }
 
     .container {
-      max-width: 880px;
+      max-width: 900px;
       margin: 28px auto 48px;
       padding: 0 16px;
     }
 
     .narrow {
-      max-width: 520px;
+      max-width: 560px;
       margin: 0 auto;
     }
 
@@ -95,12 +98,10 @@
       margin-bottom: 20px;
     }
 
-    .card-header {
-      margin-bottom: 20px;
-    }
+    .card-header { margin-bottom: 20px; }
 
     .card-title {
-      font-size: 1.2rem;
+      font-size: 1.18rem;
       font-weight: 800;
       margin-bottom: 4px;
     }
@@ -114,7 +115,7 @@
 
     label {
       display: block;
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       font-weight: 600;
       margin-bottom: 6px;
       color: #334155;
@@ -122,9 +123,7 @@
 
     input[type="text"],
     input[type="password"],
-    input[type="number"],
-    input[type="date"],
-    input[type="time"] {
+    input[type="number"] {
       width: 100%;
       font-family: inherit;
       font-size: 0.95rem;
@@ -142,7 +141,7 @@
       box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
     }
 
-    .field { margin-bottom: 16px; }
+    .field { margin-bottom: 15px; }
 
     .grid-2 {
       display: grid;
@@ -152,7 +151,7 @@
 
     .grid-3 {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 2fr 1fr 1fr;
       gap: 14px;
     }
 
@@ -167,7 +166,7 @@
       justify-content: center;
       gap: 8px;
       font-family: inherit;
-      font-size: 0.94rem;
+      font-size: 0.93rem;
       font-weight: 700;
       padding: 11px 18px;
       border-radius: 12px;
@@ -177,24 +176,14 @@
       text-decoration: none;
     }
 
-    .btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
     .btn-full { width: 100%; }
 
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-    }
+    .btn-primary { background: var(--primary); color: #fff; }
     .btn-primary:hover:not(:disabled) { background: var(--primary-hover); }
 
-    .btn-telegram {
-      background: #0088cc;
-      color: #fff;
-    }
-    .btn-telegram:hover:not(:disabled) { background: #0072ab; }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-success:hover:not(:disabled) { background: var(--success-hover); }
 
     .btn-ghost {
       background: var(--surface-soft);
@@ -219,40 +208,21 @@
     .alert {
       padding: 13px 16px;
       border-radius: 12px;
-      font-size: 0.9rem;
+      font-size: 0.91rem;
       margin-bottom: 16px;
       border: 1px solid transparent;
     }
 
-    .alert-info {
-      background: var(--primary-soft);
-      color: #1e3a8a;
-      border-color: #bfdbfe;
-    }
-
-    .alert-warning {
-      background: var(--warning-soft);
-      color: #92400e;
-      border-color: #fde68a;
-    }
-
-    .alert-danger {
-      background: var(--danger-soft);
-      color: #991b1b;
-      border-color: #fecaca;
-    }
-
-    .alert-success {
-      background: var(--success-soft);
-      color: #065f46;
-      border-color: #a7f3d0;
-    }
+    .alert-info { background: var(--primary-soft); color: #1e3a8a; border-color: #bfdbfe; }
+    .alert-warning { background: var(--warning-soft); color: #92400e; border-color: #fde68a; }
+    .alert-danger { background: var(--danger-soft); color: #991b1b; border-color: #fecaca; }
+    .alert-success { background: var(--success-soft); color: #065f46; border-color: #a7f3d0; }
 
     .meta-bar {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 16px;
     }
 
     .pill {
@@ -261,9 +231,9 @@
       gap: 6px;
       background: var(--surface-soft);
       border: 1px solid var(--border);
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 999px;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: #334155;
     }
@@ -271,6 +241,43 @@
     .pill-blue { background: var(--primary-soft); border-color: #bfdbfe; color: #1d4ed8; }
     .pill-green { background: var(--success-soft); border-color: #a7f3d0; color: #047857; }
     .pill-amber { background: var(--warning-soft); border-color: #fde68a; color: #b45309; }
+    .pill-purple { background: var(--purple-soft); border-color: #ddd6fe; color: var(--purple); }
+
+    .exam-card {
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      background: var(--surface-soft);
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+
+    .exam-card.active-border {
+      border-color: #93c5fd;
+      background: #ffffff;
+    }
+
+    .exam-card-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .exam-title {
+      font-size: 1.03rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .section-heading {
+      font-size: 0.93rem;
+      font-weight: 800;
+      color: #475569;
+      margin: 18px 0 10px;
+    }
 
     .timer-box {
       text-align: center;
@@ -288,7 +295,7 @@
     }
 
     .timer-digits {
-      font-size: 2.3rem;
+      font-size: 2.5rem;
       font-weight: 800;
       letter-spacing: 2px;
       direction: ltr;
@@ -301,9 +308,7 @@
       border-color: #fecaca;
     }
 
-    .timer-box.urgent .timer-digits {
-      color: var(--danger);
-    }
+    .timer-box.urgent .timer-digits { color: var(--danger); }
 
     .questions-grid {
       display: flex;
@@ -314,7 +319,7 @@
     }
 
     .q-badge {
-      min-width: 110px;
+      min-width: 112px;
       text-align: center;
       padding: 14px 20px;
       border-radius: 14px;
@@ -328,9 +333,9 @@
     .student-item {
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 16px;
+      padding: 18px;
       background: var(--surface-soft);
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
 
     .student-top {
@@ -339,29 +344,46 @@
       align-items: center;
       justify-content: space-between;
       gap: 10px;
-      margin-bottom: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 14px;
     }
 
     .student-name {
-      font-size: 1.02rem;
+      font-size: 1.06rem;
       font-weight: 800;
     }
 
+    .admin-exam-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 10px;
+    }
+
+    .admin-exam-form {
+      background: #fff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
     .student-details {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       color: #475569;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px 18px;
-      margin-bottom: 12px;
+      gap: 6px 16px;
+      margin-bottom: 10px;
     }
 
-    .student-actions {
+    .actions-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--border);
+      margin-top: 10px;
     }
 
     .input-row {
@@ -373,9 +395,9 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: #334155;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       cursor: pointer;
     }
 
@@ -394,10 +416,19 @@
       margin-bottom: 16px;
     }
 
-    .hint {
-      font-size: 0.8rem;
+    .divider-label {
+      font-size: 0.85rem;
+      font-weight: 700;
       color: var(--muted);
-      margin-top: 5px;
+      padding-top: 10px;
+      margin: 12px 0 12px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .hint {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 6px;
     }
 
     .toast {
@@ -429,9 +460,7 @@
         <span class="brand-dot"></span>
         <span id="siteTitleEl">سامانه آزمون شبانه</span>
       </div>
-      <div style="display:flex; gap:8px;">
-        <button id="switchModeBtn" class="btn btn-ghost btn-sm" onclick="toggleMode()">ورود استاد</button>
-      </div>
+      <button id="switchModeBtn" class="btn btn-ghost btn-sm" onclick="toggleMode()">ورود استاد</button>
     </div>
   </header>
 
@@ -444,7 +473,7 @@
       <div id="studentLoginCard" class="card">
         <div class="card-header">
           <div class="card-title">ورود دانش‌آموز</div>
-          <div class="card-sub">کد اختصاصی خود را وارد کنید تا وضعیت آزمون امشب نمایش داده شود.</div>
+          <div class="card-sub">کد اختصاصی خود را وارد کنید تا لیست آزمون‌هایتان نمایش داده شود.</div>
         </div>
 
         <div id="studentLoginErr" class="alert alert-danger hidden"></div>
@@ -454,32 +483,51 @@
             <label for="studentCodeInput">کد ورود دانش‌آموز</label>
             <input id="studentCodeInput" type="text" inputmode="numeric" placeholder="مثلاً: 1024" required autocomplete="off" />
           </div>
-          <button id="studentLoginBtn" type="submit" class="btn btn-primary btn-full">ورود به صفحه آزمون</button>
+          <button id="studentLoginBtn" type="submit" class="btn btn-primary btn-full">ورود به پنل آزمون</button>
         </form>
       </div>
 
-      <!-- صفحه وضعیت آزمون دانش‌آموز -->
+      <!-- صفحه اصلی دانش‌آموز: لیست آزمون‌ها -->
+      <div id="studentHomeCard" class="card hidden">
+        <div class="section-bar">
+          <div>
+            <div class="card-title" id="stuHomeName">خوش آمدی</div>
+            <div class="card-sub">آزمون‌های ثبت‌شده برای شما در ادامه نمایش داده شده است.</div>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-ghost btn-sm" onclick="refreshStudentStatus(true)">بروزرسانی</button>
+            <button class="btn btn-ghost btn-sm" onclick="logoutStudent()">خروج</button>
+          </div>
+        </div>
+
+        <div id="studentHomeErr" class="alert alert-danger hidden"></div>
+
+        <div class="section-heading">آزمون‌های پیش رو</div>
+        <div id="upcomingExamsList"></div>
+
+        <div id="finishedExamsSection" class="hidden">
+          <div class="section-heading">آزمون‌های انجام‌شده</div>
+          <div id="finishedExamsList"></div>
+        </div>
+      </div>
+
+      <!-- صفحه اجرای یک آزمون مشخص -->
       <div id="studentExamCard" class="card hidden">
         <div class="section-bar">
           <div>
-            <div class="card-title" id="stuNameTitle">سلام</div>
-            <div class="card-sub" id="stuLessonSub"></div>
+            <div class="card-title" id="activeExamTitle">آزمون</div>
+            <div class="card-sub" id="activeExamMetaSub"></div>
           </div>
-          <button class="btn btn-ghost btn-sm" onclick="logoutStudent()">خروج</button>
+          <button id="backToHomeBtn" class="btn btn-ghost btn-sm" onclick="backToStudentHome()">بازگشت به صفحه اصلی</button>
         </div>
 
-        <div class="meta-bar" id="stuMetaBar"></div>
         <div id="studentExamErr" class="alert alert-danger hidden"></div>
 
-        <!-- حالت ۱: ثبت بازه سوالات -->
-        <div id="stateWaitingRange" class="hidden">
-          <div class="alert alert-info">
-            لطفاً ابتدا <strong>تصاویر صفحاتی که از این درس حل کرده‌ای</strong> را در تلگرام برای استاد بفرست؛ سپس در کادر زیر مشخص کن از چه سوالی تا چه سوالی را کار کرده‌ای و بلدی.
+        <!-- گام ۱: یادآوری ارسال عکس + ثبت بازه سوالات -->
+        <div id="stepRangeBox" class="hidden">
+          <div class="alert alert-warning">
+            لطفاً اول مطمئن شو <strong>عکس‌های صفحاتی که می‌خواهی آزمون بدهی</strong> را در پیام‌رسانی که با مشاور در ارتباطی برای مشاور فرستاده باشی؛ سپس بازه سوالاتی که کار کرده‌ای و بلدی را در کادر زیر وارد کن.
           </div>
-
-          <a id="tgPhotoBtn" href="#" target="_blank" rel="noopener" class="btn btn-telegram btn-full hidden" style="margin-bottom: 18px;">
-            ارسال تصاویر صفحات در تلگرام استاد
-          </a>
 
           <form onsubmit="handleRangeSubmit(event)">
             <div class="grid-2">
@@ -492,46 +540,39 @@
                 <input id="rangeEndInput" type="number" min="1" placeholder="مثلاً: 60" required />
               </div>
             </div>
-            <button id="submitRangeBtn" type="submit" class="btn btn-primary btn-full">ثبت بازه سوالات</button>
-            <div class="hint" style="text-align:center;">پس از ثبت، بازه قفل می‌شود و سوالات در ساعت مقرر نمایش داده خواهند شد.</div>
+            <button id="submitRangeBtn" type="submit" class="btn btn-primary btn-full">تایید بازه سوالات</button>
+            <div class="hint" style="text-align:center;">هنوز تایمر شروع نمی‌شود؛ در مرحله بعد هر وقت آماده بودی استارت می‌زنی.</div>
           </form>
         </div>
 
-        <!-- حالت ۲: انتظار تا ساعت آزمون -->
-        <div id="stateWaitingTime" class="hidden">
-          <div class="alert alert-success" id="rangeSavedMsg"></div>
+        <!-- گام ۲: آماده‌سازی قبل از استارت نهایی -->
+        <div id="stepReadyBox" class="hidden">
+          <div class="alert alert-success" id="readyRangeInfo"></div>
 
-          <div class="timer-box">
-            <div class="timer-label">زمان باقی‌مانده تا نمایش شماره سوالات</div>
-            <div class="timer-digits" id="examCountdown">--:--:--</div>
-          </div>
+          <div class="alert alert-info" id="readyWarningMsg"></div>
 
-          <div class="alert alert-warning" style="margin-bottom: 14px;">
-            لطفاً رأس ساعت مقرر در همین صفحه حاضر باش. به محض صفر شدن تایمر، شماره سوالاتت نمایش داده می‌شود و باید ظرف <strong>۵ دقیقه</strong> حل و تحلیلشان را با ویس در تلگرام برای مشاورت بفرستی.
-          </div>
-
-          <button class="btn btn-ghost btn-full" onclick="refreshStudentStatus(true)">بروزرسانی وضعیت</button>
+          <button id="finalStartBtn" class="btn btn-success btn-full" onclick="handleFinalStart()">
+            آماده‌ام — استارت آزمون و نمایش سوالات
+          </button>
         </div>
 
-        <!-- حالت ۳: نمایش سوالات + تایمر ۵ دقیقه‌ای -->
-        <div id="stateRevealed" class="hidden">
-          <div class="alert alert-warning">
-            همین الان وارد تلگرام شو و تا <strong>۵ دقیقه آینده</strong>، هم <strong>راه‌حل</strong> و هم <strong>تحلیل</strong> سوالات زیر را در قالب ویس برای مشاورت بفرست.
-          </div>
+        <!-- گام ۳: نمایش سوالات + تایمر + دکمه اتمام آزمون -->
+        <div id="stepRunningBox" class="hidden">
+          <div class="alert alert-warning" id="runningGuideMsg"></div>
 
           <div style="text-align:center; font-weight:700; color:#334155;">سوالات انتخاب‌شده برای شما:</div>
           <div class="questions-grid" id="revealedQuestionsBox"></div>
 
           <div class="timer-box" id="voiceTimerBox">
-            <div class="timer-label" id="voiceTimerLabel">مهلت باقی‌مانده برای ارسال ویس در تلگرام</div>
-            <div class="timer-digits" id="voiceCountdown">05:00</div>
+            <div class="timer-label" id="voiceTimerLabel">زمان باقی‌مانده برای ارسال ویس</div>
+            <div class="timer-digits" id="voiceCountdown">00:00</div>
           </div>
 
-          <a id="tgVoiceBtn" href="#" target="_blank" rel="noopener" class="btn btn-telegram btn-full hidden" style="margin-bottom: 12px;">
-            ورود سریع به تلگرام استاد و ارسال ویس
-          </a>
+          <div class="hint" id="startedAtHint" style="text-align:center; margin-bottom:18px;"></div>
 
-          <div class="hint" id="revealTimeHint" style="text-align:center;"></div>
+          <button id="finishExamBtn" class="btn btn-primary btn-full" onclick="handleFinishExam()">
+            اتمام آزمون و بازگشت به صفحه اصلی
+          </button>
         </div>
       </div>
 
@@ -544,7 +585,7 @@
       <div id="adminLoginCard" class="card narrow">
         <div class="card-header">
           <div class="card-title">ورود به پنل استاد</div>
-          <div class="card-sub">رمز عبوری که در مرحله راه‌اندازی تعیین کردید را وارد کنید.</div>
+          <div class="card-sub">رمز عبور استاد را وارد کنید.</div>
         </div>
         <div id="adminLoginErr" class="alert alert-danger hidden"></div>
         <form onsubmit="handleAdminLogin(event)">
@@ -563,23 +604,16 @@
         <div class="card">
           <div class="section-bar" style="margin-bottom: 12px;">
             <div>
-              <div class="card-title">تنظیمات سایت و تلگرام</div>
-              <div class="card-sub">عنوان بالای سایت و آیدی تلگرام برای دکمه ارسال سریع ویس</div>
+              <div class="card-title">تنظیمات سایت</div>
+              <div class="card-sub">عنوان بالای سایت را هر زمان می‌توانید تغییر دهید.</div>
             </div>
             <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">خروج از پنل استاد</button>
           </div>
           <form onsubmit="handleSaveConfig(event)">
-            <div class="grid-2">
-              <div class="field">
-                <label for="cfgSiteTitle">عنوان بالای سایت</label>
-                <input id="cfgSiteTitle" type="text" placeholder="مثلاً: سامانه آزمون شبانه" required />
-              </div>
-              <div class="field">
-                <label for="cfgTelegramId">آیدی تلگرام شما (بدون @)</label>
-                <input id="cfgTelegramId" type="text" dir="ltr" placeholder="مثلاً: MyTelegramID" />
-              </div>
+            <div class="input-row">
+              <input id="cfgSiteTitle" type="text" placeholder="مثلاً: سامانه آزمون شبانه" required />
+              <button id="saveCfgBtn" type="submit" class="btn btn-ghost" style="flex-shrink:0;">ذخیره عنوان</button>
             </div>
-            <button id="saveCfgBtn" type="submit" class="btn btn-ghost">ذخیره تنظیمات</button>
           </form>
         </div>
 
@@ -587,64 +621,56 @@
         <div class="card" id="studentFormCard">
           <div class="section-bar">
             <div>
-              <div class="card-title" id="formTitleEl">افزودن دانش‌آموز جدید</div>
-              <div class="card-sub">اطلاعات درس امشب، تعداد سوال و ساعت آزمون هر دانش‌آموز را مشخص کنید.</div>
+              <div class="card-title" id="stuFormTitle">افزودن دانش‌آموز جدید</div>
+              <div class="card-sub">دانش‌آموز را ثبت کنید و برایش یک یا چند آزمون تعریف کنید.</div>
             </div>
-            <button id="cancelEditBtn" class="btn btn-ghost btn-sm hidden" onclick="resetAdminForm()">انصراف از ویرایش</button>
+            <button id="cancelStuEditBtn" class="btn btn-ghost btn-sm hidden" onclick="resetStudentForm()">انصراف از ویرایش</button>
           </div>
 
-          <div id="adminFormErr" class="alert alert-danger hidden"></div>
+          <div id="adminStuFormErr" class="alert alert-danger hidden"></div>
 
           <form onsubmit="handleSaveStudent(event)">
             <div class="grid-2">
               <div class="field">
-                <label for="fName">نام دانش‌آموز</label>
-                <input id="fName" type="text" placeholder="مثلاً: مهدی رضایی" required />
+                <label for="fStuName">نام دانش‌آموز</label>
+                <input id="fStuName" type="text" placeholder="مثلاً: مهدی رضایی" required />
               </div>
               <div class="field">
-                <label for="fCode">کد ورود اختصاصی</label>
+                <label for="fStuCode">کد ورود اختصاصی</label>
                 <div class="input-row">
-                  <input id="fCode" type="text" inputmode="numeric" placeholder="مثلاً: 4821" required />
+                  <input id="fStuCode" type="text" inputmode="numeric" placeholder="مثلاً: 4821" required />
                   <button type="button" class="btn btn-ghost btn-sm" onclick="generateRandomCode()">ساخت کد</button>
                 </div>
               </div>
             </div>
 
-            <div class="field">
-              <label for="fLesson">درس و مبحث امشب</label>
-              <input id="fLesson" type="text" placeholder="مثلاً: فیزیک دهم - فصل کار و انرژی" required />
-            </div>
-
-            <div class="grid-3">
-              <div class="field">
-                <label for="fCount">تعداد سوال انتخابی</label>
-                <input id="fCount" type="number" min="1" max="20" value="2" required />
-              </div>
-              <div class="field">
-                <label for="fDate">تاریخ آزمون</label>
-                <input id="fDate" type="date" required oninput="updateJalaliPreview()" />
-                <div class="hint" id="jalaliPreview"></div>
-              </div>
-              <div class="field">
-                <label for="fTime">ساعت شروع آزمون (تهران)</label>
-                <input id="fTime" type="time" value="21:30" required />
+            <div id="initialExamFields">
+              <div class="divider-label">اولین آزمون این دانش‌آموز (اختیاری — بعداً هم می‌توانید هر تعداد آزمون اضافه کنید)</div>
+              <div class="grid-3">
+                <div class="field">
+                  <label for="fInitLesson">درس و مبحث</label>
+                  <input id="fInitLesson" type="text" placeholder="مثلاً: فیزیک دهم - کار و انرژی" />
+                </div>
+                <div class="field">
+                  <label for="fInitCount">تعداد سوال</label>
+                  <input id="fInitCount" type="number" min="1" max="20" value="2" />
+                </div>
+                <div class="field">
+                  <label for="fInitMinutes">زمان ویس (دقیقه)</label>
+                  <input id="fInitMinutes" type="number" min="1" max="180" value="5" />
+                </div>
               </div>
             </div>
-
-            <label id="resetExamWrap" class="checkbox-row hidden">
-              <input id="fResetExam" type="checkbox" />
-              <span>ریست کردن آزمون قبلی این دانش‌آموز (برای تنظیم آزمون شب جدید)</span>
-            </label>
 
             <button id="saveStudentBtn" type="submit" class="btn btn-primary">ثبت دانش‌آموز</button>
           </form>
         </div>
 
-        <!-- لیست دانش‌آموزها و وضعیت زنده -->
+        <!-- لیست دانش‌آموزها و مدیریت آزمون‌ها -->
         <div class="card">
           <div class="section-bar">
             <div>
-              <div class="card-title">لیست دانش‌آموزها و گزارش آزمون</div>
+              <div class="card-title">دانش‌آموزها و گزارش آزمون‌ها</div>
               <div class="card-sub" id="studentsCountSub">در حال بارگذاری...</div>
             </div>
             <button id="refreshAdminBtn" class="btn btn-ghost btn-sm" onclick="loadAdminData()">بروزرسانی گزارش</button>
@@ -663,12 +689,17 @@
   <script>
     const API_URL = "https://script.google.com/macros/s/AKfycbxbBvfTWmLj6PCOwUpBYqJhNaJ2O-DkaP5bQ2pHyAVh3HoBWEV1gEbzSgXjUl6AL2s/exec";
 
-    let currentMode = "student"; // "student" | "admin"
+    let currentMode = "student";
     let adminPassword = sessionStorage.getItem("exam_admin_pass") || "";
     let activeStudentCode = sessionStorage.getItem("exam_student_code") || "";
+
+    let studentData = null;
+    let activeExamId = null;
+    let countdownInterval = null;
+
     let adminStudents = [];
     let editingStudentId = null;
-    let countdownInterval = null;
+    let openExamFormState = null; // { studentId, examId: null | string }
 
     // ==================== ابزارهای کمکی ====================
     function toFa(val) {
@@ -700,6 +731,7 @@
 
     function showErr(id, msg) {
       const el = document.getElementById(id);
+      if (!el) return;
       if (!msg) {
         el.classList.add("hidden");
         el.textContent = "";
@@ -709,31 +741,27 @@
       }
     }
 
-    function tehranTodayISO() {
-      const parts = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "Asia/Tehran",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-      }).formatToParts(new Date());
-      const y = parts.find(p => p.type === "year").value;
-      const m = parts.find(p => p.type === "month").value;
-      const d = parts.find(p => p.type === "day").value;
-      return `${y}-${m}-${d}`;
-    }
-
-    function formatJalali(isoDate) {
-      if (!isoDate) return "";
+    function formatTehranDateTime(ts) {
+      if (!ts) return "";
       try {
-        const dt = new Date(isoDate + "T12:00:00+03:30");
-        return new Intl.DateTimeFormat("fa-IR", {
+        const dt = new Date(ts);
+        const datePart = new Intl.DateTimeFormat("fa-IR", {
           timeZone: "Asia/Tehran",
           weekday: "long",
-          day: "numeric",
-          month: "long"
+          year: "numeric",
+          month: "long",
+          day: "numeric"
         }).format(dt);
+        const timePart = new Intl.DateTimeFormat("fa-IR", {
+          timeZone: "Asia/Tehran",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false
+        }).format(dt);
+        return `${datePart} — ساعت ${timePart}`;
       } catch (e) {
-        return isoDate;
+        return "";
       }
     }
 
@@ -752,25 +780,21 @@
       }
     }
 
-    function formatDuration(ms, includeHours) {
+    function formatDuration(ms) {
       const totalSec = Math.max(0, Math.ceil(ms / 1000));
       const h = Math.floor(totalSec / 3600);
       const m = Math.floor((totalSec % 3600) / 60);
       const s = totalSec % 60;
       const pad = n => String(n).padStart(2, "0");
-      if (includeHours || h > 0) {
-        return toFa(`${pad(h)}:${pad(m)}:${pad(s)}`);
-      }
+      if (h > 0) return toFa(`${pad(h)}:${pad(m)}:${pad(s)}`);
       return toFa(`${pad(m)}:${pad(s)}`);
     }
 
     function applySiteConfig(cfg) {
-      if (!cfg) return;
-      if (cfg.siteTitle) {
-        document.getElementById("siteTitleEl").textContent = cfg.siteTitle;
-        document.title = cfg.siteTitle;
-        localStorage.setItem("exam_site_title", cfg.siteTitle);
-      }
+      if (!cfg || !cfg.siteTitle) return;
+      document.getElementById("siteTitleEl").textContent = cfg.siteTitle;
+      document.title = cfg.siteTitle;
+      localStorage.setItem("exam_site_title", cfg.siteTitle);
     }
 
     async function apiCall(payload) {
@@ -784,7 +808,7 @@
       return await res.json();
     }
 
-    // ==================== جابه‌جایی بین پنل‌ها ====================
+    // ==================== تغییر حالت پنل ====================
     function toggleMode() {
       clearInterval(countdownInterval);
       if (currentMode === "student") {
@@ -828,12 +852,13 @@
         }
         activeStudentCode = code;
         sessionStorage.setItem("exam_student_code", code);
-        renderStudentView(res);
+        activeExamId = null;
+        applyStudentPayload(res);
       } catch (err) {
         showErr("studentLoginErr", "خطا در اتصال به اینترنت یا سرور. دوباره تلاش کنید.");
       } finally {
         btn.disabled = false;
-        btn.textContent = "ورود به صفحه آزمون";
+        btn.textContent = "ورود به پنل آزمون";
       }
     }
 
@@ -846,10 +871,177 @@
           showErr("studentLoginErr", res.error || "کد ورود دیگر معتبر نیست.");
           return;
         }
-        renderStudentView(res);
-        if (notify) showToast("وضعیت بروزرسانی شد");
+        applyStudentPayload(res);
+        if (notify) showToast("لیست آزمون‌ها بروزرسانی شد");
       } catch (err) {
-        showErr("studentExamErr", "خطا در ارتباط با سرور. دوباره امتحان کنید.");
+        showErr("studentHomeErr", "خطا در ارتباط با سرور. دوباره تلاش کنید.");
+      }
+    }
+
+    function applyStudentPayload(res) {
+      applySiteConfig(res.config);
+      studentData = res.student;
+      document.getElementById("studentLoginCard").classList.add("hidden");
+
+      if (activeExamId) {
+        const ex = (studentData.exams || []).find(item => item.id === activeExamId);
+        if (ex && ex.status !== "finished") {
+          renderActiveExam(ex);
+          return;
+        }
+        activeExamId = null;
+      }
+      renderStudentHome();
+    }
+
+    function renderStudentHome() {
+      clearInterval(countdownInterval);
+      showErr("studentHomeErr", "");
+      document.getElementById("studentExamCard").classList.add("hidden");
+      document.getElementById("studentHomeCard").classList.remove("hidden");
+
+      document.getElementById("stuHomeName").textContent = `${studentData.name} عزیز، خوش آمدی`;
+
+      const exams = studentData.exams || [];
+      const upcoming = exams.filter(e => e.status !== "finished");
+      const finished = exams.filter(e => e.status === "finished");
+
+      const upBox = document.getElementById("upcomingExamsList");
+      if (!upcoming.length) {
+        upBox.innerHTML = `<div class="alert alert-info" style="margin-bottom:0;">در حال حاضر آزمون جدیدی برای شما ثبت نشده است.</div>`;
+      } else {
+        upBox.innerHTML = upcoming.map(ex => {
+          let badge = `<span class="pill pill-amber">آماده شروع</span>`;
+          let btnLabel = "شروع آزمون";
+          let btnClass = "btn-primary";
+
+          if (ex.status === "ready_to_start") {
+            badge = `<span class="pill pill-blue">بازه ثبت شده — آماده استارت</span>`;
+            btnLabel = "ادامه و استارت آزمون";
+          } else if (ex.status === "in_progress") {
+            badge = `<span class="pill pill-purple">در حال اجرا</span>`;
+            btnLabel = "بازگشت به آزمون در حال اجرا";
+            btnClass = "btn-success";
+          }
+
+          return `
+            <div class="exam-card active-border">
+              <div class="exam-card-top">
+                <div class="exam-title">${escapeHtml(ex.lesson)}</div>
+                ${badge}
+              </div>
+              <div class="meta-bar" style="margin-bottom:14px;">
+                <span class="pill">تعداد سوال: ${toFa(ex.questionCount)} سوال</span>
+                <span class="pill pill-blue">مدت زمان مورد نیاز: ${toFa(ex.voiceMinutes)} دقیقه</span>
+              </div>
+              <button class="btn ${btnClass} btn-full" onclick="openExam('${escapeHtml(ex.id)}')">${btnLabel}</button>
+            </div>
+          `;
+        }).join("");
+      }
+
+      const finSec = document.getElementById("finishedExamsSection");
+      const finBox = document.getElementById("finishedExamsList");
+      if (!finished.length) {
+        finSec.classList.add("hidden");
+      } else {
+        finSec.classList.remove("hidden");
+        finBox.innerHTML = finished.map(ex => {
+          const qs = (ex.selectedQuestions || []).map(q => `سوال ${toFa(q)}`).join("، ");
+          return `
+            <div class="exam-card">
+              <div class="exam-card-top">
+                <div class="exam-title">${escapeHtml(ex.lesson)}</div>
+                <span class="pill pill-green">انجام شد</span>
+              </div>
+              <div class="student-details" style="margin-bottom:0;">
+                <span><strong>سوالات شما:</strong> ${qs}</span>
+                <span><strong>شروع:</strong> ${formatTehranDateTime(ex.startedAt)}</span>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+    }
+
+    function openExam(examId) {
+      const ex = (studentData.exams || []).find(item => item.id === examId);
+      if (!ex) return;
+      activeExamId = examId;
+      renderActiveExam(ex);
+    }
+
+    function backToStudentHome() {
+      activeExamId = null;
+      clearInterval(countdownInterval);
+      renderStudentHome();
+    }
+
+    function renderActiveExam(ex) {
+      clearInterval(countdownInterval);
+      showErr("studentExamErr", "");
+      document.getElementById("studentHomeCard").classList.add("hidden");
+      document.getElementById("studentExamCard").classList.remove("hidden");
+
+      document.getElementById("activeExamTitle").textContent = ex.lesson;
+      document.getElementById("activeExamMetaSub").textContent =
+        `تعداد سوال: ${toFa(ex.questionCount)} سوال  •  زمان ارسال ویس: ${toFa(ex.voiceMinutes)} دقیقه`;
+
+      document.getElementById("stepRangeBox").classList.add("hidden");
+      document.getElementById("stepReadyBox").classList.add("hidden");
+      document.getElementById("stepRunningBox").classList.add("hidden");
+
+      const backBtn = document.getElementById("backToHomeBtn");
+
+      if (ex.status === "waiting_range") {
+        backBtn.classList.remove("hidden");
+        document.getElementById("rangeStartInput").value = "";
+        document.getElementById("rangeEndInput").value = "";
+        document.getElementById("stepRangeBox").classList.remove("hidden");
+      } else if (ex.status === "ready_to_start") {
+        backBtn.classList.remove("hidden");
+        document.getElementById("readyRangeInfo").innerHTML =
+          `بازه <strong>سوال ${toFa(ex.rangeStart)} تا ${toFa(ex.rangeEnd)}</strong> با موفقیت ثبت شد.`;
+        document.getElementById("readyWarningMsg").innerHTML =
+          `توجه: به محض زدن دکمه استارت زیر، تایمر <strong>${toFa(ex.voiceMinutes)} دقیقه‌ای</strong> آزمون شروع می‌شود و شماره سوالاتت نمایش داده می‌شوند. لطفاً همین الان شرایط را برای <strong>ویس گرفتن در پیام‌رسانی که با مشاور در ارتباطی</strong> آماده کن و سپس استارت را بزن.`;
+        document.getElementById("stepReadyBox").classList.remove("hidden");
+      } else if (ex.status === "in_progress") {
+        backBtn.classList.add("hidden");
+        document.getElementById("stepRunningBox").classList.remove("hidden");
+
+        document.getElementById("runningGuideMsg").innerHTML =
+          `همین الان در <strong>پیام‌رسانی که با مشاور در ارتباطی</strong> ویس بگیر و تا پایان مهلت، هم <strong>راه‌حل</strong> و هم <strong>تحلیل</strong> سوالات زیر را ارسال کن.`;
+
+        document.getElementById("revealedQuestionsBox").innerHTML = (ex.selectedQuestions || [])
+          .map(num => `<div class="q-badge">سوال ${toFa(num)}</div>`)
+          .join("");
+
+        document.getElementById("startedAtHint").textContent =
+          `زمان شروع آزمون: ${formatTehranDateTime(ex.startedAt)}`;
+
+        const targetLocal = Date.now() + (ex.remainingMs || 0);
+        const timerEl = document.getElementById("voiceCountdown");
+        const timerBox = document.getElementById("voiceTimerBox");
+        const timerLabel = document.getElementById("voiceTimerLabel");
+
+        const tick = () => {
+          const left = targetLocal - Date.now();
+          if (left <= 0) {
+            clearInterval(countdownInterval);
+            timerEl.textContent = "۰۰:۰۰";
+            timerBox.classList.add("urgent");
+            timerLabel.textContent = "مهلت ارسال ویس به پایان رسید";
+            return;
+          }
+          timerEl.textContent = formatDuration(left);
+          if (left <= 60000) {
+            timerBox.classList.add("urgent");
+          } else {
+            timerBox.classList.remove("urgent");
+          }
+        };
+        tick();
+        countdownInterval = setInterval(tick, 500);
       }
     }
 
@@ -867,6 +1059,7 @@
         const res = await apiCall({
           action: "student_submit_range",
           code: activeStudentCode,
+          examId: activeExamId,
           rangeStart,
           rangeEnd
         });
@@ -874,121 +1067,76 @@
           showErr("studentExamErr", res.error || "خطا در ثبت بازه.");
           return;
         }
-        showToast("بازه سوالات با موفقیت ثبت شد");
-        renderStudentView(res);
+        applyStudentPayload(res);
       } catch (err) {
         showErr("studentExamErr", "خطا در ارتباط با سرور. دوباره تلاش کنید.");
       } finally {
         btn.disabled = false;
-        btn.textContent = "ثبت بازه سوالات";
+        btn.textContent = "تایید بازه سوالات";
       }
     }
 
-    function renderStudentView(res) {
-      clearInterval(countdownInterval);
-      applySiteConfig(res.config);
+    async function handleFinalStart() {
       showErr("studentExamErr", "");
+      const btn = document.getElementById("finalStartBtn");
+      btn.disabled = true;
+      btn.textContent = "در حال شروع آزمون...";
 
-      document.getElementById("studentLoginCard").classList.add("hidden");
-      document.getElementById("studentExamCard").classList.remove("hidden");
-
-      const s = res.student;
-      const tg = (res.config && res.config.telegramId) ? res.config.telegramId.replace(/^@/, "") : "";
-
-      document.getElementById("stuNameTitle").textContent = `${s.name} عزیز، خوش آمدی`;
-      document.getElementById("stuLessonSub").textContent = `درس امشب: ${s.lesson}`;
-
-      document.getElementById("stuMetaBar").innerHTML = `
-        <span class="pill pill-blue">ساعت آزمون: ${toFa(s.examTime)} (${formatJalali(s.examDate)})</span>
-        <span class="pill">تعداد سوال: ${toFa(s.questionCount)} سوال</span>
-      `;
-
-      document.getElementById("stateWaitingRange").classList.add("hidden");
-      document.getElementById("stateWaitingTime").classList.add("hidden");
-      document.getElementById("stateRevealed").classList.add("hidden");
-
-      if (res.status === "waiting_range") {
-        document.getElementById("stateWaitingRange").classList.remove("hidden");
-        const tgBtn = document.getElementById("tgPhotoBtn");
-        if (tg) {
-          tgBtn.href = `https://t.me/${encodeURIComponent(tg)}`;
-          tgBtn.classList.remove("hidden");
-        } else {
-          tgBtn.classList.add("hidden");
+      try {
+        const res = await apiCall({
+          action: "student_start_exam",
+          code: activeStudentCode,
+          examId: activeExamId
+        });
+        if (!res.ok) {
+          showErr("studentExamErr", res.error || "خطا در شروع آزمون.");
+          return;
         }
-      } else if (res.status === "waiting_time") {
-        document.getElementById("stateWaitingTime").classList.remove("hidden");
-        document.getElementById("rangeSavedMsg").innerHTML =
-          `بازه <strong>سوال ${toFa(s.rangeStart)} تا ${toFa(s.rangeEnd)}</strong> برای شما ثبت شد.`;
+        applyStudentPayload(res);
+      } catch (err) {
+        showErr("studentExamErr", "خطا در ارتباط با سرور. دوباره تلاش کنید.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "آماده‌ام — استارت آزمون و نمایش سوالات";
+      }
+    }
 
-        const targetLocal = Date.now() + (res.remainingMs || 0);
-        const timerEl = document.getElementById("examCountdown");
+    async function handleFinishExam() {
+      if (!confirm("آیا ویس را برای مشاورت ارسال کردی و می‌خواهی آزمون را تمام کنی؟")) return;
+      showErr("studentExamErr", "");
+      const btn = document.getElementById("finishExamBtn");
+      btn.disabled = true;
+      btn.textContent = "در حال ثبت اتمام آزمون...";
 
-        const tick = () => {
-          const left = targetLocal - Date.now();
-          if (left <= 0) {
-            clearInterval(countdownInterval);
-            timerEl.textContent = "۰۰:۰۰:۰۰";
-            setTimeout(() => refreshStudentStatus(false), 1200);
-            return;
-          }
-          timerEl.textContent = formatDuration(left, true);
-        };
-        tick();
-        countdownInterval = setInterval(tick, 500);
-      } else if (res.status === "revealed") {
-        document.getElementById("stateRevealed").classList.remove("hidden");
-        const qBox = document.getElementById("revealedQuestionsBox");
-        qBox.innerHTML = (s.selectedQuestions || [])
-          .map(num => `<div class="q-badge">سوال ${toFa(num)}</div>`)
-          .join("");
-
-        const tgVoice = document.getElementById("tgVoiceBtn");
-        if (tg) {
-          tgVoice.href = `https://t.me/${encodeURIComponent(tg)}`;
-          tgVoice.classList.remove("hidden");
-        } else {
-          tgVoice.classList.add("hidden");
+      try {
+        const res = await apiCall({
+          action: "student_finish_exam",
+          code: activeStudentCode,
+          examId: activeExamId
+        });
+        if (!res.ok) {
+          showErr("studentExamErr", res.error || "خطا در ثبت اتمام آزمون.");
+          return;
         }
-
-        const revealHint = document.getElementById("revealTimeHint");
-        revealHint.textContent = s.revealedAt
-          ? `زمان باز شدن سوالات برای شما: ساعت ${formatTehranClock(s.revealedAt)}`
-          : "";
-
-        const voiceTarget = Date.now() + (res.voiceRemainingMs || 0);
-        const voiceEl = document.getElementById("voiceCountdown");
-        const voiceBox = document.getElementById("voiceTimerBox");
-        const voiceLabel = document.getElementById("voiceTimerLabel");
-
-        const tickVoice = () => {
-          const left = voiceTarget - Date.now();
-          if (left <= 0) {
-            clearInterval(countdownInterval);
-            voiceEl.textContent = "۰۰:۰۰";
-            voiceBox.classList.add("urgent");
-            voiceLabel.textContent = "مهلت ۵ دقیقه‌ای ارسال ویس به پایان رسید";
-            return;
-          }
-          voiceEl.textContent = formatDuration(left, false);
-          if (left <= 60000) {
-            voiceBox.classList.add("urgent");
-          } else {
-            voiceBox.classList.remove("urgent");
-          }
-        };
-        tickVoice();
-        countdownInterval = setInterval(tickVoice, 500);
+        activeExamId = null;
+        showToast("آزمون با موفقیت به پایان رسید");
+        applyStudentPayload(res);
+      } catch (err) {
+        showErr("studentExamErr", "خطا در ارتباط با سرور. دوباره تلاش کنید.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "اتمام آزمون و بازگشت به صفحه اصلی";
       }
     }
 
     function logoutStudent() {
       clearInterval(countdownInterval);
       activeStudentCode = "";
+      activeExamId = null;
+      studentData = null;
       sessionStorage.removeItem("exam_student_code");
       document.getElementById("studentCodeInput").value = "";
-      document.getElementById("rangeStartInput").value = "";
-      document.getElementById("rangeEndInput").value = "";
+      document.getElementById("studentHomeCard").classList.add("hidden");
       document.getElementById("studentExamCard").classList.add("hidden");
       document.getElementById("studentLoginCard").classList.remove("hidden");
     }
@@ -1045,7 +1193,6 @@
       if (res.config) {
         applySiteConfig(res.config);
         document.getElementById("cfgSiteTitle").value = res.config.siteTitle || "سامانه آزمون شبانه";
-        document.getElementById("cfgTelegramId").value = res.config.telegramId || "";
       }
 
       adminStudents = res.students || [];
@@ -1061,171 +1208,94 @@
         const res = await apiCall({
           action: "admin_save_config",
           password: adminPassword,
-          siteTitle: document.getElementById("cfgSiteTitle").value,
-          telegramId: document.getElementById("cfgTelegramId").value
+          siteTitle: document.getElementById("cfgSiteTitle").value
         });
         if (!res.ok) {
           showToast(res.error || "خطا در ذخیره تنظیمات");
           return;
         }
         applySiteConfig(res.config);
-        showToast("تنظیمات سایت ذخیره شد");
+        showToast("عنوان سایت ذخیره شد");
       } catch (err) {
         showToast("خطا در ارتباط با سرور");
       } finally {
         btn.disabled = false;
-        btn.textContent = "ذخیره تنظیمات";
+        btn.textContent = "ذخیره عنوان";
       }
     }
 
     async function handleSaveStudent(e) {
       e.preventDefault();
-      showErr("adminFormErr", "");
+      showErr("adminStuFormErr", "");
       const btn = document.getElementById("saveStudentBtn");
       btn.disabled = true;
-      btn.textContent = "در حال ثبت...";
+      btn.textContent = "در حال ذخیره...";
 
       try {
-        const res = await apiCall({
+        const payload = {
           action: "admin_save_student",
           password: adminPassword,
           id: editingStudentId,
-          name: document.getElementById("fName").value,
-          code: document.getElementById("fCode").value,
-          lesson: document.getElementById("fLesson").value,
-          questionCount: document.getElementById("fCount").value,
-          examDate: document.getElementById("fDate").value,
-          examTime: document.getElementById("fTime").value,
-          resetExam: editingStudentId ? document.getElementById("fResetExam").checked : true
-        });
+          name: document.getElementById("fStuName").value,
+          code: document.getElementById("fStuCode").value
+        };
+
+        if (!editingStudentId) {
+          payload.lesson = document.getElementById("fInitLesson").value;
+          payload.questionCount = document.getElementById("fInitCount").value;
+          payload.voiceMinutes = document.getElementById("fInitMinutes").value;
+        }
+
+        const res = await apiCall(payload);
         if (!res.ok) {
-          showErr("adminFormErr", res.error || "خطا در ذخیره اطلاعات");
+          showErr("adminStuFormErr", res.error || "خطا در ثبت دانش‌آموز");
           return;
         }
         adminStudents = res.students || [];
+        resetStudentForm();
         renderStudentsList();
-        resetAdminForm();
         showToast("اطلاعات دانش‌آموز ذخیره شد");
       } catch (err) {
-        showErr("adminFormErr", "خطا در ارتباط با سرور.");
+        showErr("adminStuFormErr", "خطا در ارتباط با سرور.");
       } finally {
         btn.disabled = false;
         btn.textContent = editingStudentId ? "ذخیره تغییرات" : "ثبت دانش‌آموز";
       }
     }
 
-    function renderStudentsList() {
-      const box = document.getElementById("studentsListEl");
-      const sub = document.getElementById("studentsCountSub");
-      sub.textContent = `تعداد کل دانش‌آموزها: ${toFa(adminStudents.length)} نفر`;
-
-      if (!adminStudents.length) {
-        box.innerHTML = `<div class="alert alert-info" style="margin-bottom:0;">هنوز هیچ دانش‌آموزی اضافه نکرده‌اید. از فرم بالا اولین دانش‌آموز را ثبت کنید.</div>`;
-        return;
-      }
-
-      box.innerHTML = adminStudents.map(s => {
-        let badge = `<span class="pill pill-amber">در انتظار ثبت بازه</span>`;
-        let report = "";
-
-        if (s.revealedAt) {
-          badge = `<span class="pill pill-green">سوالات مشاهده شد</span>`;
-          const qs = (s.selectedQuestions || []).map(q => `سوال ${toFa(q)}`).join("، ");
-          report = `
-            <div class="alert alert-success" style="margin:10px 0 12px; padding:10px 14px;">
-              بازه اعلام‌شده: <strong>${toFa(s.rangeStart)} تا ${toFa(s.rangeEnd)}</strong>
-              &nbsp;|&nbsp; سوالات انتخابی: <strong>${qs}</strong>
-              &nbsp;|&nbsp; ساعت دقیق مشاهده: <strong>${formatTehranClock(s.revealedAt)}</strong>
-            </div>
-          `;
-        } else if (s.rangeStart !== null) {
-          badge = `<span class="pill pill-blue">بازه ثبت شد — منتظر ساعت آزمون</span>`;
-          const qs = (s.selectedQuestions || []).map(q => toFa(q)).join("، ");
-          report = `
-            <div class="alert alert-info" style="margin:10px 0 12px; padding:10px 14px;">
-              بازه اعلام‌شده: <strong>${toFa(s.rangeStart)} تا ${toFa(s.rangeEnd)}</strong>
-              &nbsp;|&nbsp; سوالات رزرو شده (مخفی از دانش‌آموز): <strong>${qs}</strong>
-            </div>
-          `;
-        }
-
-        return `
-          <div class="student-item">
-            <div class="student-top">
-              <div class="student-name">${escapeHtml(s.name)}</div>
-              ${badge}
-            </div>
-            <div class="student-details">
-              <span><strong>کد ورود:</strong> ${toFa(escapeHtml(s.code))}</span>
-              <span><strong>درس:</strong> ${escapeHtml(s.lesson)}</span>
-              <span><strong>زمان آزمون:</strong> ${formatJalali(s.examDate)} ساعت ${toFa(escapeHtml(s.examTime))}</span>
-              <span><strong>تعداد سوال:</strong> ${toFa(s.questionCount)}</span>
-            </div>
-            ${report}
-            <div class="student-actions">
-              <button class="btn btn-ghost btn-sm" onclick="editStudent('${escapeHtml(s.id)}')">ویرایش / آزمون جدید</button>
-              <button class="btn btn-ghost btn-sm" onclick="resetStudentExam('${escapeHtml(s.id)}')">ریست آزمون</button>
-              <button class="btn btn-danger-soft btn-sm" onclick="deleteStudent('${escapeHtml(s.id)}', '${escapeHtml(s.name)}')">حذف</button>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
     function editStudent(id) {
       const s = adminStudents.find(x => x.id === id);
       if (!s) return;
       editingStudentId = id;
-      document.getElementById("formTitleEl").textContent = `ویرایش / تنظیم آزمون جدید برای ${s.name}`;
+      document.getElementById("stuFormTitle").textContent = `ویرایش مشخصات ${s.name}`;
       document.getElementById("saveStudentBtn").textContent = "ذخیره تغییرات";
-      document.getElementById("cancelEditBtn").classList.remove("hidden");
-      document.getElementById("resetExamWrap").classList.remove("hidden");
-      document.getElementById("fResetExam").checked = true;
+      document.getElementById("cancelStuEditBtn").classList.remove("hidden");
+      document.getElementById("initialExamFields").classList.add("hidden");
 
-      document.getElementById("fName").value = s.name;
-      document.getElementById("fCode").value = s.code;
-      document.getElementById("fLesson").value = s.lesson;
-      document.getElementById("fCount").value = s.questionCount;
-      document.getElementById("fDate").value = s.examDate || tehranTodayISO();
-      document.getElementById("fTime").value = s.examTime || "21:30";
-      updateJalaliPreview();
-
+      document.getElementById("fStuName").value = s.name;
+      document.getElementById("fStuCode").value = s.code;
       document.getElementById("studentFormCard").scrollIntoView({ behavior: "smooth" });
     }
 
-    function resetAdminForm() {
+    function resetStudentForm() {
       editingStudentId = null;
-      showErr("adminFormErr", "");
-      document.getElementById("formTitleEl").textContent = "افزودن دانش‌آموز جدید";
+      showErr("adminStuFormErr", "");
+      document.getElementById("stuFormTitle").textContent = "افزودن دانش‌آموز جدید";
       document.getElementById("saveStudentBtn").textContent = "ثبت دانش‌آموز";
-      document.getElementById("cancelEditBtn").classList.add("hidden");
-      document.getElementById("resetExamWrap").classList.add("hidden");
-      document.getElementById("fResetExam").checked = false;
+      document.getElementById("cancelStuEditBtn").classList.add("hidden");
+      document.getElementById("initialExamFields").classList.remove("hidden");
 
-      document.getElementById("fName").value = "";
-      document.getElementById("fCode").value = "";
-      document.getElementById("fLesson").value = "";
-      document.getElementById("fCount").value = "2";
-      document.getElementById("fDate").value = tehranTodayISO();
-      document.getElementById("fTime").value = "21:30";
-      updateJalaliPreview();
+      document.getElementById("fStuName").value = "";
+      document.getElementById("fStuCode").value = "";
+      document.getElementById("fInitLesson").value = "";
+      document.getElementById("fInitCount").value = "2";
+      document.getElementById("fInitMinutes").value = "5";
     }
 
-    async function resetStudentExam(id) {
-      if (!confirm("بازه و سوالات قبلی این دانش‌آموز پاک شود تا بتواند دوباره آزمون بدهد؟")) return;
-      try {
-        const res = await apiCall({ action: "admin_reset_student", password: adminPassword, id });
-        if (!res.ok) return showToast(res.error || "خطا");
-        adminStudents = res.students || [];
-        renderStudentsList();
-        showToast("آزمون دانش‌آموز ریست شد");
-      } catch (err) {
-        showToast("خطا در ارتباط با سرور");
-      }
-    }
-
-    async function deleteStudent(id, name) {
-      if (!confirm(`آیا از حذف «${name}» مطمئن هستید؟`)) return;
+    async function deleteStudent(id) {
+      const s = adminStudents.find(x => x.id === id);
+      if (!s) return;
+      if (!confirm(`آیا از حذف «${s.name}» و همه آزمون‌هایش مطمئن هستید؟`)) return;
       try {
         const res = await apiCall({ action: "admin_delete_student", password: adminPassword, id });
         if (!res.ok) return showToast(res.error || "خطا");
@@ -1237,14 +1307,207 @@
       }
     }
 
-    function generateRandomCode() {
-      const code = String(Math.floor(1000 + Math.random() * 9000));
-      document.getElementById("fCode").value = code;
+    function openExamForm(studentId, examId) {
+      openExamFormState = { studentId, examId: examId || null };
+      renderStudentsList();
     }
 
-    function updateJalaliPreview() {
-      const val = document.getElementById("fDate").value;
-      document.getElementById("jalaliPreview").textContent = val ? `معادل شمسی: ${formatJalali(val)}` : "";
+    function closeExamForm() {
+      openExamFormState = null;
+      renderStudentsList();
+    }
+
+    async function handleSaveExam(e, studentId, examId) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector("button[type='submit']");
+      btn.disabled = true;
+      btn.textContent = "در حال ذخیره...";
+
+      try {
+        const res = await apiCall({
+          action: "admin_save_exam",
+          password: adminPassword,
+          studentId,
+          examId: examId || null,
+          lesson: form.querySelector("[name='lesson']").value,
+          questionCount: form.querySelector("[name='questionCount']").value,
+          voiceMinutes: form.querySelector("[name='voiceMinutes']").value,
+          resetExam: examId ? form.querySelector("[name='resetExam']").checked : false
+        });
+        if (!res.ok) {
+          showToast(res.error || "خطا در ذخیره آزمون");
+          btn.disabled = false;
+          btn.textContent = examId ? "ذخیره تغییرات آزمون" : "ثبت آزمون";
+          return;
+        }
+        adminStudents = res.students || [];
+        openExamFormState = null;
+        renderStudentsList();
+        showToast(examId ? "آزمون ویرایش شد" : "آزمون جدید اضافه شد");
+      } catch (err) {
+        showToast("خطا در ارتباط با سرور");
+        btn.disabled = false;
+        btn.textContent = examId ? "ذخیره تغییرات آزمون" : "ثبت آزمون";
+      }
+    }
+
+    async function resetExam(studentId, examId) {
+      if (!confirm("بازه و گزارش این آزمون پاک شود تا دانش‌آموز دوباره آن را بدهد؟")) return;
+      try {
+        const res = await apiCall({ action: "admin_reset_exam", password: adminPassword, studentId, examId });
+        if (!res.ok) return showToast(res.error || "خطا");
+        adminStudents = res.students || [];
+        renderStudentsList();
+        showToast("آزمون ریست شد");
+      } catch (err) {
+        showToast("خطا در ارتباط با سرور");
+      }
+    }
+
+    async function deleteExam(studentId, examId) {
+      if (!confirm("این آزمون حذف شود؟")) return;
+      try {
+        const res = await apiCall({ action: "admin_delete_exam", password: adminPassword, studentId, examId });
+        if (!res.ok) return showToast(res.error || "خطا");
+        adminStudents = res.students || [];
+        renderStudentsList();
+        showToast("آزمون حذف شد");
+      } catch (err) {
+        showToast("خطا در ارتباط با سرور");
+      }
+    }
+
+    function renderStudentsList() {
+      const box = document.getElementById("studentsListEl");
+      const sub = document.getElementById("studentsCountSub");
+      sub.textContent = `تعداد کل دانش‌آموزها: ${toFa(adminStudents.length)} نفر`;
+
+      if (!adminStudents.length) {
+        box.innerHTML = `<div class="alert alert-info" style="margin-bottom:0;">هنوز دانش‌آموزی اضافه نکرده‌اید. از فرم بالا اولین دانش‌آموز را ثبت کنید.</div>`;
+        return;
+      }
+
+      box.innerHTML = adminStudents.map(s => {
+        const exams = s.exams || [];
+        const isFormOpen = openExamFormState && openExamFormState.studentId === s.id;
+        let examFormHtml = "";
+
+        if (isFormOpen) {
+          const editEx = openExamFormState.examId
+            ? exams.find(x => x.id === openExamFormState.examId)
+            : null;
+          examFormHtml = `
+            <div class="admin-exam-form">
+              <div class="section-bar" style="margin-bottom:10px;">
+                <strong>${editEx ? "ویرایش آزمون" : "افزودن آزمون جدید برای " + escapeHtml(s.name)}</strong>
+                <button type="button" class="btn btn-ghost btn-sm" onclick="closeExamForm()">بستن</button>
+              </div>
+              <form onsubmit="handleSaveExam(event, '${escapeHtml(s.id)}', '${editEx ? escapeHtml(editEx.id) : ""}')">
+                <div class="grid-3">
+                  <div class="field">
+                    <label>درس و مبحث</label>
+                    <input name="lesson" type="text" value="${editEx ? escapeHtml(editEx.lesson) : ""}" placeholder="مثلاً: ریاضی یازدهم - تابع" required />
+                  </div>
+                  <div class="field">
+                    <label>تعداد سوال</label>
+                    <input name="questionCount" type="number" min="1" max="20" value="${editEx ? editEx.questionCount : 2}" required />
+                  </div>
+                  <div class="field">
+                    <label>زمان ویس (دقیقه)</label>
+                    <input name="voiceMinutes" type="number" min="1" max="180" value="${editEx ? (editEx.voiceMinutes || 5) : 5}" required />
+                  </div>
+                </div>
+                ${editEx ? `
+                  <label class="checkbox-row">
+                    <input name="resetExam" type="checkbox" />
+                    <span>ریست کردن وضعیت این آزمون (پاک کردن بازه و سوالات قبلی)</span>
+                  </label>
+                ` : ""}
+                <button type="submit" class="btn btn-primary btn-sm">${editEx ? "ذخیره تغییرات آزمون" : "ثبت آزمون"}</button>
+              </form>
+            </div>
+          `;
+        }
+
+        const examsHtml = !exams.length
+          ? `<div class="hint">هنوز آزمونی برای این دانش‌آموز تعریف نشده است. روی «+ افزودن آزمون» بزنید.</div>`
+          : exams.map(ex => {
+              let badge = `<span class="pill pill-amber">در انتظار شروع</span>`;
+              let report = "";
+
+              if (ex.finishedAt) {
+                badge = `<span class="pill pill-green">انجام شد</span>`;
+                const qs = (ex.selectedQuestions || []).map(q => `سوال ${toFa(q)}`).join("، ");
+                report = `
+                  <div class="alert alert-success" style="margin:8px 0 10px; padding:10px 14px;">
+                    <div><strong>شروع آزمون:</strong> ${formatTehranDateTime(ex.startedAt)}</div>
+                    <div><strong>اتمام آزمون:</strong> ساعت ${formatTehranClock(ex.finishedAt)}</div>
+                    <div><strong>بازه اعلام‌شده:</strong> ${toFa(ex.rangeStart)} تا ${toFa(ex.rangeEnd)} &nbsp;|&nbsp; <strong>سوالات:</strong> ${qs}</div>
+                  </div>
+                `;
+              } else if (ex.startedAt) {
+                badge = `<span class="pill pill-purple">در حال برگزاری</span>`;
+                const qs = (ex.selectedQuestions || []).map(q => `سوال ${toFa(q)}`).join("، ");
+                report = `
+                  <div class="alert alert-warning" style="margin:8px 0 10px; padding:10px 14px;">
+                    <div><strong>شروع آزمون:</strong> ${formatTehranDateTime(ex.startedAt)}</div>
+                    <div><strong>بازه اعلام‌شده:</strong> ${toFa(ex.rangeStart)} تا ${toFa(ex.rangeEnd)} &nbsp;|&nbsp; <strong>سوالات:</strong> ${qs}</div>
+                  </div>
+                `;
+              } else if (ex.rangeStart !== null) {
+                badge = `<span class="pill pill-blue">بازه ثبت شده — منتظر استارت</span>`;
+                const qs = (ex.selectedQuestions || []).map(q => toFa(q)).join("، ");
+                report = `
+                  <div class="alert alert-info" style="margin:8px 0 10px; padding:10px 14px;">
+                    <strong>بازه اعلام‌شده:</strong> ${toFa(ex.rangeStart)} تا ${toFa(ex.rangeEnd)}
+                    &nbsp;|&nbsp; <strong>سوالات رزرو شده (مخفی):</strong> ${qs}
+                  </div>
+                `;
+              }
+
+              return `
+                <div class="admin-exam-box">
+                  <div class="exam-card-top" style="margin-bottom:6px;">
+                    <strong>${escapeHtml(ex.lesson)}</strong>
+                    ${badge}
+                  </div>
+                  <div class="student-details" style="margin-bottom:6px;">
+                    <span>تعداد سوال: <strong>${toFa(ex.questionCount)}</strong></span>
+                    <span>مهلت ارسال ویس: <strong>${toFa(ex.voiceMinutes || 5)} دقیقه</strong></span>
+                  </div>
+                  ${report}
+                  <div class="actions-row" style="margin-top:8px;">
+                    <button class="btn btn-ghost btn-sm" onclick="openExamForm('${escapeHtml(s.id)}', '${escapeHtml(ex.id)}')">ویرایش آزمون</button>
+                    <button class="btn btn-ghost btn-sm" onclick="resetExam('${escapeHtml(s.id)}', '${escapeHtml(ex.id)}')">ریست</button>
+                    <button class="btn btn-danger-soft btn-sm" onclick="deleteExam('${escapeHtml(s.id)}', '${escapeHtml(ex.id)}')">حذف آزمون</button>
+                  </div>
+                </div>
+              `;
+            }).join("");
+
+        return `
+          <div class="student-item">
+            <div class="student-top">
+              <div>
+                <div class="student-name">${escapeHtml(s.name)}</div>
+                <div class="hint" style="margin-top:2px;">کد ورود: <strong>${toFa(escapeHtml(s.code))}</strong></div>
+              </div>
+              <div style="display:flex; flex-wrap:wrap; gap:6px;">
+                <button class="btn btn-primary btn-sm" onclick="openExamForm('${escapeHtml(s.id)}', null)">+ افزودن آزمون</button>
+                <button class="btn btn-ghost btn-sm" onclick="editStudent('${escapeHtml(s.id)}')">ویرایش نام/کد</button>
+                <button class="btn btn-danger-soft btn-sm" onclick="deleteStudent('${escapeHtml(s.id)}')">حذف</button>
+              </div>
+            </div>
+            ${examFormHtml}
+            ${examsHtml}
+          </div>
+        `;
+      }).join("");
+    }
+
+    function generateRandomCode() {
+      document.getElementById("fStuCode").value = String(Math.floor(1000 + Math.random() * 9000));
     }
 
     function logoutAdmin() {
@@ -1258,8 +1521,6 @@
     (function init() {
       const savedTitle = localStorage.getItem("exam_site_title");
       if (savedTitle) applySiteConfig({ siteTitle: savedTitle });
-      document.getElementById("fDate").value = tehranTodayISO();
-      updateJalaliPreview();
       if (activeStudentCode) {
         refreshStudentStatus(false);
       }
