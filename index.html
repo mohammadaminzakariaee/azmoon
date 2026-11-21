@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سامانه آزمون شبانه</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --surface-soft: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-soft: #eff6ff;
+      --success: #059669;
+      --success-soft: #ecfdf5;
+      --warning: #d97706;
+      --warning-soft: #fffbeb;
+      --danger: #dc2626;
+      --danger-soft: #fef2f2;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Vazirmatn', Tahoma, system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
+
+    .topbar-inner {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-soft);
+      flex-shrink: 0;
+    }
+
+    .container {
+      max-width: 880px;
+      margin: 28px auto 48px;
+      padding: 0 16px;
+    }
+
+    .narrow {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 26px;
+      margin-bottom: 20px;
+    }
+
+    .card-header {
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .hidden { display: none !important; }
+
+    label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #334155;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"] {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.95rem;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    .field { margin-bottom: 16px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    @media (max-width: 640px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: inherit;
+      font-size: 0.94rem;
+      font-weight: 700;
+      padding: 11px 18px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.18s ease;
+      text-decoration: none;
+    }
+
+    .btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .btn-full { width: 100%; }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+    .btn-primary:hover:not(:disabled) { background: var(--primary-hover); }
+
+    .btn-telegram {
+      background: #0088cc;
+      color: #fff;
+    }
+    .btn-telegram:hover:not(:disabled) { background: #0072ab; }
+
+    .btn-ghost {
+      background: var(--surface-soft);
+      color: #334155;
+      border-color: var(--border);
+    }
+    .btn-ghost:hover:not(:disabled) { background: #eef2f7; }
+
+    .btn-danger-soft {
+      background: var(--danger-soft);
+      color: var(--danger);
+      border-color: #fecaca;
+    }
+    .btn-danger-soft:hover:not(:disabled) { background: #fee2e2; }
+
+    .btn-sm {
+      font-size: 0.82rem;
+      padding: 7px 12px;
+      border-radius: 9px;
+    }
+
+    .alert {
+      padding: 13px 16px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+      border: 1px solid transparent;
+    }
+
+    .alert-info {
+      background: var(--primary-soft);
+      color: #1e3a8a;
+      border-color: #bfdbfe;
+    }
+
+    .alert-warning {
+      background: var(--warning-soft);
+      color: #92400e;
+      border-color: #fde68a;
+    }
+
+    .alert-danger {
+      background: var(--danger-soft);
+      color: #991b1b;
+      border-color: #fecaca;
+    }
+
+    .alert-success {
+      background: var(--success-soft);
+      color: #065f46;
+      border-color: #a7f3d0;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    .pill-blue { background: var(--primary-soft); border-color: #bfdbfe; color: #1d4ed8; }
+    .pill-green { background: var(--success-soft); border-color: #a7f3d0; color: #047857; }
+    .pill-amber { background: var(--warning-soft); border-color: #fde68a; color: #b45309; }
+
+    .timer-box {
+      text-align: center;
+      padding: 24px 16px;
+      border-radius: 14px;
+      background: var(--surface-soft);
+      border: 1px solid var(--border);
+      margin: 18px 0;
+    }
+
+    .timer-label {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .timer-digits {
+      font-size: 2.3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      direction: ltr;
+      color: var(--primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .timer-box.urgent {
+      background: var(--danger-soft);
+      border-color: #fecaca;
+    }
+
+    .timer-box.urgent .timer-digits {
+      color: var(--danger);
+    }
+
+    .questions-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 18px 0 22px;
+    }
+
+    .q-badge {
+      min-width: 110px;
+      text-align: center;
+      padding: 14px 20px;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #fff;
+      font-size: 1.25rem;
+      font-weight: 800;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+    }
+
+    .student-item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      background: var(--surface-soft);
+      margin-bottom: 12px;
+    }
+
+    .student-top {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .student-name {
+      font-size: 1.02rem;
+      font-weight: 800;
+    }
+
+    .student-details {
+      font-size: 0.88rem;
+      color: #475569;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-bottom: 12px;
+    }
+
+    .student-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .input-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      color: #334155;
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+
+    .checkbox-row input {
+      width: 17px;
+      height: 17px;
+      accent-color: var(--primary);
+    }
+
+    .section-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      color: #fff;
+      padding: 11px 20px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span id="siteTitleEl">سامانه آزمون شبانه</span>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button id="switchModeBtn" class="btn btn-ghost btn-sm" onclick="toggleMode()">ورود استاد</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- ==================== پنل دانش‌آموز ==================== -->
+    <section id="studentSection" class="narrow">
+
+      <!-- ورود دانش‌آموز -->
+      <div id="studentLoginCard" class="card">
+        <div class="card-header">
+          <div class="card-title">ورود دانش‌آموز</div>
+          <div class="card-sub">کد اختصاصی خود را وارد کنید تا وضعیت آزمون امشب نمایش داده شود.</div>
+        </div>
+
+        <div id="studentLoginErr" class="alert alert-danger hidden"></div>
+
+        <form onsubmit="handleStudentLogin(event)">
+          <div class="field">
+            <label for="studentCodeInput">کد ورود دانش‌آموز</label>
+            <input id="studentCodeInput" type="text" inputmode="numeric" placeholder="مثلاً: 1024" required autocomplete="off" />
+          </div>
+          <button id="studentLoginBtn" type="submit" class="btn btn-primary btn-full">ورود به صفحه آزمون</button>
+        </form>
+      </div>
+
+      <!-- صفحه وضعیت آزمون دانش‌آموز -->
+      <div id="studentExamCard" class="card hidden">
+        <div class="section-bar">
+          <div>
+            <div class="card-title" id="stuNameTitle">سلام</div>
+            <div class="card-sub" id="stuLessonSub"></div>
+          </div>
+          <button class="btn btn-ghost btn-sm" onclick="logoutStudent()">خروج</button>
+        </div>
+
+        <div class="meta-bar" id="stuMetaBar"></div>
+        <div id="studentExamErr" class="alert alert-danger hidden"></div>
+
+        <!-- حالت ۱: ثبت بازه سوالات -->
+        <div id="stateWaitingRange" class="hidden">
+          <div class="alert alert-info">
+            لطفاً ابتدا <strong>تصاویر صفحاتی که از این درس حل کرده‌ای</strong> را در تلگرام برای استاد بفرست؛ سپس در کادر زیر مشخص کن از چه سوالی تا چه سوالی را کار کرده‌ای و بلدی.
+          </div>
+
+          <a id="tgPhotoBtn" href="#" target="_blank" rel="noopener" class="btn btn-telegram btn-full hidden" style="margin-bottom: 18px;">
+            ارسال تصاویر صفحات در تلگرام استاد
+          </a>
+
+          <form onsubmit="handleRangeSubmit(event)">
+            <div class="grid-2">
+              <div class="field">
+                <label for="rangeStartInput">از سوال شماره</label>
+                <input id="rangeStartInput" type="number" min="1" placeholder="مثلاً: 1" required />
+              </div>
+              <div class="field">
+                <label for="rangeEndInput">تا سوال شماره</label>
+                <input id="rangeEndInput" type="number" min="1" placeholder="مثلاً: 60" required />
+              </div>
+            </div>
+            <button id="submitRangeBtn" type="submit" class="btn btn-primary btn-full">ثبت بازه سوالات</button>
+            <div class="hint" style="text-align:center;">پس از ثبت، بازه قفل می‌شود و سوالات در ساعت مقرر نمایش داده خواهند شد.</div>
+          </form>
+        </div>
+
+        <!-- حالت ۲: انتظار تا ساعت آزمون -->
+        <div id="stateWaitingTime" class="hidden">
+          <div class="alert alert-success" id="rangeSavedMsg"></div>
+
+          <div class="timer-box">
+            <div class="timer-label">زمان باقی‌مانده تا نمایش شماره سوالات</div>
+            <div class="timer-digits" id="examCountdown">--:--:--</div>
+          </div>
+
+          <div class="alert alert-warning" style="margin-bottom: 14px;">
+            لطفاً رأس ساعت مقرر در همین صفحه حاضر باش. به محض صفر شدن تایمر، شماره سوالاتت نمایش داده می‌شود و باید ظرف <strong>۵ دقیقه</strong> حل و تحلیلشان را با ویس در تلگرام برای مشاورت بفرستی.
+          </div>
+
+          <button class="btn btn-ghost btn-full" onclick="refreshStudentStatus(true)">بروزرسانی وضعیت</button>
+        </div>
+
+        <!-- حالت ۳: نمایش سوالات + تایمر ۵ دقیقه‌ای -->
+        <div id="stateRevealed" class="hidden">
+          <div class="alert alert-warning">
+            همین الان وارد تلگرام شو و تا <strong>۵ دقیقه آینده</strong>، هم <strong>راه‌حل</strong> و هم <strong>تحلیل</strong> سوالات زیر را در قالب ویس برای مشاورت بفرست.
+          </div>
+
+          <div style="text-align:center; font-weight:700; color:#334155;">سوالات انتخاب‌شده برای شما:</div>
+          <div class="questions-grid" id="revealedQuestionsBox"></div>
+
+          <div class="timer-box" id="voiceTimerBox">
+            <div class="timer-label" id="voiceTimerLabel">مهلت باقی‌مانده برای ارسال ویس در تلگرام</div>
+            <div class="timer-digits" id="voiceCountdown">05:00</div>
+          </div>
+
+          <a id="tgVoiceBtn" href="#" target="_blank" rel="noopener" class="btn btn-telegram btn-full hidden" style="margin-bottom: 12px;">
+            ورود سریع به تلگرام استاد و ارسال ویس
+          </a>
+
+          <div class="hint" id="revealTimeHint" style="text-align:center;"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== پنل مدیریت استاد ==================== -->
+    <section id="adminSection" class="hidden">
+
+      <!-- ورود استاد -->
+      <div id="adminLoginCard" class="card narrow">
+        <div class="card-header">
+          <div class="card-title">ورود به پنل استاد</div>
+          <div class="card-sub">رمز عبوری که در مرحله راه‌اندازی تعیین کردید را وارد کنید.</div>
+        </div>
+        <div id="adminLoginErr" class="alert alert-danger hidden"></div>
+        <form onsubmit="handleAdminLogin(event)">
+          <div class="field">
+            <label for="adminPassInput">رمز عبور استاد</label>
+            <input id="adminPassInput" type="password" placeholder="رمز عبور" required />
+          </div>
+          <button id="adminLoginBtn" type="submit" class="btn btn-primary btn-full">ورود به پنل مدیریت</button>
+        </form>
+      </div>
+
+      <!-- داشبورد استاد -->
+      <div id="adminDashboard" class="hidden">
+
+        <!-- تنظیمات عمومی سایت -->
+        <div class="card">
+          <div class="section-bar" style="margin-bottom: 12px;">
+            <div>
+              <div class="card-title">تنظیمات سایت و تلگرام</div>
+              <div class="card-sub">عنوان بالای سایت و آیدی تلگرام برای دکمه ارسال سریع ویس</div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">خروج از پنل استاد</button>
+          </div>
+          <form onsubmit="handleSaveConfig(event)">
+            <div class="grid-2">
+              <div class="field">
+                <label for="cfgSiteTitle">عنوان بالای سایت</label>
+                <input id="cfgSiteTitle" type="text" placeholder="مثلاً: سامانه آزمون شبانه" required />
+              </div>
+              <div class="field">
+                <label for="cfgTelegramId">آیدی تلگرام شما (بدون @)</label>
+                <input id="cfgTelegramId" type="text" dir="ltr" placeholder="مثلاً: MyTelegramID" />
+              </div>
+            </div>
+            <button id="saveCfgBtn" type="submit" class="btn btn-ghost">ذخیره تنظیمات</button>
+          </form>
+        </div>
+
+        <!-- فرم افزودن یا ویرایش دانش‌آموز -->
+        <div class="card" id="studentFormCard">
+          <div class="section-bar">
+            <div>
+              <div class="card-title" id="formTitleEl">افزودن دانش‌آموز جدید</div>
+              <div class="card-sub">اطلاعات درس امشب، تعداد سوال و ساعت آزمون هر دانش‌آموز را مشخص کنید.</div>
+            </div>
+            <button id="cancelEditBtn" class="btn btn-ghost btn-sm hidden" onclick="resetAdminForm()">انصراف از ویرایش</button>
+          </div>
+
+          <div id="adminFormErr" class="alert alert-danger hidden"></div>
+
+          <form onsubmit="handleSaveStudent(event)">
+            <div class="grid-2">
+              <div class="field">
+                <label for="fName">نام دانش‌آموز</label>
+                <input id="fName" type="text" placeholder="مثلاً: مهدی رضایی" required />
+              </div>
+              <div class="field">
+                <label for="fCode">کد ورود اختصاصی</label>
+                <div class="input-row">
+                  <input id="fCode" type="text" inputmode="numeric" placeholder="مثلاً: 4821" required />
+                  <button type="button" class="btn btn-ghost btn-sm" onclick="generateRandomCode()">ساخت کد</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="fLesson">درس و مبحث امشب</label>
+              <input id="fLesson" type="text" placeholder="مثلاً: فیزیک دهم - فصل کار و انرژی" required />
+            </div>
+
+            <div class="grid-3">
+              <div class="field">
+                <label for="fCount">تعداد سوال انتخابی</label>
+                <input id="fCount" type="number" min="1" max="20" value="2" required />
+              </div>
+              <div class="field">
+                <label for="fDate">تاریخ آزمون</label>
+                <input id="fDate" type="date" required oninput="updateJalaliPreview()" />
+                <div class="hint" id="jalaliPreview"></div>
+              </div>
+              <div class="field">
+                <label for="fTime">ساعت شروع آزمون (تهران)</label>
+                <input id="fTime" type="time" value="21:30" required />
+              </div>
+            </div>
+
+            <label id="resetExamWrap" class="checkbox-row hidden">
+              <input id="fResetExam" type="checkbox" />
+              <span>ریست کردن آزمون قبلی این دانش‌آموز (برای تنظیم آزمون شب جدید)</span>
+            </label>
+
+            <button id="saveStudentBtn" type="submit" class="btn btn-primary">ثبت دانش‌آموز</button>
+          </form>
+        </div>
+
+        <!-- لیست دانش‌آموزها و وضعیت زنده -->
+        <div class="card">
+          <div class="section-bar">
+            <div>
+              <div class="card-title">لیست دانش‌آموزها و گزارش آزمون</div>
+              <div class="card-sub" id="studentsCountSub">در حال بارگذاری...</div>
+            </div>
+            <button id="refreshAdminBtn" class="btn btn-ghost btn-sm" onclick="loadAdminData()">بروزرسانی گزارش</button>
+          </div>
+
+          <div id="studentsListEl"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toastEl" class="toast"></div>
+
+  <script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbxbBvfTWmLj6PCOwUpBYqJhNaJ2O-DkaP5bQ2pHyAVh3HoBWEV1gEbzSgXjUl6AL2s/exec";
+
+    let currentMode = "student"; // "student" | "admin"
+    let adminPassword = sessionStorage.getItem("exam_admin_pass") || "";
+    let activeStudentCode = sessionStorage.getItem("exam_student_code") || "";
+    let adminStudents = [];
+    let editingStudentId = null;
+    let countdownInterval = null;
+
+    // ==================== ابزارهای کمکی ====================
+    function toFa(val) {
+      return String(val ?? "").replace(/\d/g, d => "۰۱۲۳۴۵۶۷۸۹"[d]);
+    }
+
+    function toEn(val) {
+      return String(val ?? "").trim()
+        .replace(/[۰-۹]/g, d => "۰۱۲۳۴۵۶۷۸۹".indexOf(d))
+        .replace(/[٠-٩]/g, d => "٠١٢٣٤٥٦٧٨٩".indexOf(d));
+    }
+
+    function escapeHtml(str) {
+      return String(str ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById("toastEl");
+      el.textContent = msg;
+      el.classList.add("show");
+      clearTimeout(el._t);
+      el._t = setTimeout(() => el.classList.remove("show"), 2800);
+    }
+
+    function showErr(id, msg) {
+      const el = document.getElementById(id);
+      if (!msg) {
+        el.classList.add("hidden");
+        el.textContent = "";
+      } else {
+        el.textContent = msg;
+        el.classList.remove("hidden");
+      }
+    }
+
+    function tehranTodayISO() {
+      const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Tehran",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).formatToParts(new Date());
+      const y = parts.find(p => p.type === "year").value;
+      const m = parts.find(p => p.type === "month").value;
+      const d = parts.find(p => p.type === "day").value;
+      return `${y}-${m}-${d}`;
+    }
+
+    function formatJalali(isoDate) {
+      if (!isoDate) return "";
+      try {
+        const dt = new Date(isoDate + "T12:00:00+03:30");
+        return new Intl.DateTimeFormat("fa-IR", {
+          timeZone: "Asia/Tehran",
+          weekday: "long",
+          day: "numeric",
+          month: "long"
+        }).format(dt);
+      } catch (e) {
+        return isoDate;
+      }
+    }
+
+    function formatTehranClock(ts) {
+      if (!ts) return "";
+      try {
+        return new Intl.DateTimeFormat("fa-IR", {
+          timeZone: "Asia/Tehran",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false
+        }).format(new Date(ts));
+      } catch (e) {
+        return "";
+      }
+    }
+
+    function formatDuration(ms, includeHours) {
+      const totalSec = Math.max(0, Math.ceil(ms / 1000));
+      const h = Math.floor(totalSec / 3600);
+      const m = Math.floor((totalSec % 3600) / 60);
+      const s = totalSec % 60;
+      const pad = n => String(n).padStart(2, "0");
+      if (includeHours || h > 0) {
+        return toFa(`${pad(h)}:${pad(m)}:${pad(s)}`);
+      }
+      return toFa(`${pad(m)}:${pad(s)}`);
+    }
+
+    function applySiteConfig(cfg) {
+      if (!cfg) return;
+      if (cfg.siteTitle) {
+        document.getElementById("siteTitleEl").textContent = cfg.siteTitle;
+        document.title = cfg.siteTitle;
+        localStorage.setItem("exam_site_title", cfg.siteTitle);
+      }
+    }
+
+    async function apiCall(payload) {
+      const res = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+        redirect: "follow"
+      });
+      if (!res.ok) throw new Error("خطا در ارتباط با سرور گوگل");
+      return await res.json();
+    }
+
+    // ==================== جابه‌جایی بین پنل‌ها ====================
+    function toggleMode() {
+      clearInterval(countdownInterval);
+      if (currentMode === "student") {
+        currentMode = "admin";
+        document.getElementById("studentSection").classList.add("hidden");
+        document.getElementById("adminSection").classList.remove("hidden");
+        document.getElementById("switchModeBtn").textContent = "پنل دانش‌آموز";
+        if (adminPassword) {
+          loadAdminData();
+        } else {
+          document.getElementById("adminLoginCard").classList.remove("hidden");
+          document.getElementById("adminDashboard").classList.add("hidden");
+        }
+      } else {
+        currentMode = "student";
+        document.getElementById("adminSection").classList.add("hidden");
+        document.getElementById("studentSection").classList.remove("hidden");
+        document.getElementById("switchModeBtn").textContent = "ورود استاد";
+        if (activeStudentCode) {
+          refreshStudentStatus(false);
+        }
+      }
+    }
+
+    // ==================== منطق پنل دانش‌آموز ====================
+    async function handleStudentLogin(e) {
+      e.preventDefault();
+      showErr("studentLoginErr", "");
+      const code = toEn(document.getElementById("studentCodeInput").value);
+      if (!code) return;
+
+      const btn = document.getElementById("studentLoginBtn");
+      btn.disabled = true;
+      btn.textContent = "در حال بررسی...";
+
+      try {
+        const res = await apiCall({ action: "student_status", code });
+        if (!res.ok) {
+          showErr("studentLoginErr", res.error || "ورود ناموفق بود.");
+          return;
+        }
+        activeStudentCode = code;
+        sessionStorage.setItem("exam_student_code", code);
+        renderStudentView(res);
+      } catch (err) {
+        showErr("studentLoginErr", "خطا در اتصال به اینترنت یا سرور. دوباره تلاش کنید.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "ورود به صفحه آزمون";
+      }
+    }
+
+    async function refreshStudentStatus(notify) {
+      if (!activeStudentCode) return;
+      try {
+        const res = await apiCall({ action: "student_status", code: activeStudentCode });
+        if (!res.ok) {
+          logoutStudent();
+          showErr("studentLoginErr", res.error || "کد ورود دیگر معتبر نیست.");
+          return;
+        }
+        renderStudentView(res);
+        if (notify) showToast("وضعیت بروزرسانی شد");
+      } catch (err) {
+        showErr("studentExamErr", "خطا در ارتباط با سرور. دوباره امتحان کنید.");
+      }
+    }
+
+    async function handleRangeSubmit(e) {
+      e.preventDefault();
+      showErr("studentExamErr", "");
+      const rangeStart = toEn(document.getElementById("rangeStartInput").value);
+      const rangeEnd = toEn(document.getElementById("rangeEndInput").value);
+
+      const btn = document.getElementById("submitRangeBtn");
+      btn.disabled = true;
+      btn.textContent = "در حال ثبت...";
+
+      try {
+        const res = await apiCall({
+          action: "student_submit_range",
+          code: activeStudentCode,
+          rangeStart,
+          rangeEnd
+        });
+        if (!res.ok) {
+          showErr("studentExamErr", res.error || "خطا در ثبت بازه.");
+          return;
+        }
+        showToast("بازه سوالات با موفقیت ثبت شد");
+        renderStudentView(res);
+      } catch (err) {
+        showErr("studentExamErr", "خطا در ارتباط با سرور. دوباره تلاش کنید.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "ثبت بازه سوالات";
+      }
+    }
+
+    function renderStudentView(res) {
+      clearInterval(countdownInterval);
+      applySiteConfig(res.config);
+      showErr("studentExamErr", "");
+
+      document.getElementById("studentLoginCard").classList.add("hidden");
+      document.getElementById("studentExamCard").classList.remove("hidden");
+
+      const s = res.student;
+      const tg = (res.config && res.config.telegramId) ? res.config.telegramId.replace(/^@/, "") : "";
+
+      document.getElementById("stuNameTitle").textContent = `${s.name} عزیز، خوش آمدی`;
+      document.getElementById("stuLessonSub").textContent = `درس امشب: ${s.lesson}`;
+
+      document.getElementById("stuMetaBar").innerHTML = `
+        <span class="pill pill-blue">ساعت آزمون: ${toFa(s.examTime)} (${formatJalali(s.examDate)})</span>
+        <span class="pill">تعداد سوال: ${toFa(s.questionCount)} سوال</span>
+      `;
+
+      document.getElementById("stateWaitingRange").classList.add("hidden");
+      document.getElementById("stateWaitingTime").classList.add("hidden");
+      document.getElementById("stateRevealed").classList.add("hidden");
+
+      if (res.status === "waiting_range") {
+        document.getElementById("stateWaitingRange").classList.remove("hidden");
+        const tgBtn = document.getElementById("tgPhotoBtn");
+        if (tg) {
+          tgBtn.href = `https://t.me/${encodeURIComponent(tg)}`;
+          tgBtn.classList.remove("hidden");
+        } else {
+          tgBtn.classList.add("hidden");
+        }
+      } else if (res.status === "waiting_time") {
+        document.getElementById("stateWaitingTime").classList.remove("hidden");
+        document.getElementById("rangeSavedMsg").innerHTML =
+          `بازه <strong>سوال ${toFa(s.rangeStart)} تا ${toFa(s.rangeEnd)}</strong> برای شما ثبت شد.`;
+
+        const targetLocal = Date.now() + (res.remainingMs || 0);
+        const timerEl = document.getElementById("examCountdown");
+
+        const tick = () => {
+          const left = targetLocal - Date.now();
+          if (left <= 0) {
+            clearInterval(countdownInterval);
+            timerEl.textContent = "۰۰:۰۰:۰۰";
+            setTimeout(() => refreshStudentStatus(false), 1200);
+            return;
+          }
+          timerEl.textContent = formatDuration(left, true);
+        };
+        tick();
+        countdownInterval = setInterval(tick, 500);
+      } else if (res.status === "revealed") {
+        document.getElementById("stateRevealed").classList.remove("hidden");
+        const qBox = document.getElementById("revealedQuestionsBox");
+        qBox.innerHTML = (s.selectedQuestions || [])
+          .map(num => `<div class="q-badge">سوال ${toFa(num)}</div>`)
+          .join("");
+
+        const tgVoice = document.getElementById("tgVoiceBtn");
+        if (tg) {
+          tgVoice.href = `https://t.me/${encodeURIComponent(tg)}`;
+          tgVoice.classList.remove("hidden");
+        } else {
+          tgVoice.classList.add("hidden");
+        }
+
+        const revealHint = document.getElementById("revealTimeHint");
+        revealHint.textContent = s.revealedAt
+          ? `زمان باز شدن سوالات برای شما: ساعت ${formatTehranClock(s.revealedAt)}`
+          : "";
+
+        const voiceTarget = Date.now() + (res.voiceRemainingMs || 0);
+        const voiceEl = document.getElementById("voiceCountdown");
+        const voiceBox = document.getElementById("voiceTimerBox");
+        const voiceLabel = document.getElementById("voiceTimerLabel");
+
+        const tickVoice = () => {
+          const left = voiceTarget - Date.now();
+          if (left <= 0) {
+            clearInterval(countdownInterval);
+            voiceEl.textContent = "۰۰:۰۰";
+            voiceBox.classList.add("urgent");
+            voiceLabel.textContent = "مهلت ۵ دقیقه‌ای ارسال ویس به پایان رسید";
+            return;
+          }
+          voiceEl.textContent = formatDuration(left, false);
+          if (left <= 60000) {
+            voiceBox.classList.add("urgent");
+          } else {
+            voiceBox.classList.remove("urgent");
+          }
+        };
+        tickVoice();
+        countdownInterval = setInterval(tickVoice, 500);
+      }
+    }
+
+    function logoutStudent() {
+      clearInterval(countdownInterval);
+      activeStudentCode = "";
+      sessionStorage.removeItem("exam_student_code");
+      document.getElementById("studentCodeInput").value = "";
+      document.getElementById("rangeStartInput").value = "";
+      document.getElementById("rangeEndInput").value = "";
+      document.getElementById("studentExamCard").classList.add("hidden");
+      document.getElementById("studentLoginCard").classList.remove("hidden");
+    }
+
+    // ==================== منطق پنل استاد ====================
+    async function handleAdminLogin(e) {
+      e.preventDefault();
+      showErr("adminLoginErr", "");
+      const pass = document.getElementById("adminPassInput").value;
+      const btn = document.getElementById("adminLoginBtn");
+      btn.disabled = true;
+      btn.textContent = "در حال ورود...";
+
+      try {
+        const res = await apiCall({ action: "admin_login", password: pass });
+        if (!res.ok) {
+          showErr("adminLoginErr", res.error || "رمز عبور اشتباه است.");
+          return;
+        }
+        adminPassword = pass;
+        sessionStorage.setItem("exam_admin_pass", pass);
+        document.getElementById("adminPassInput").value = "";
+        renderAdminDashboard(res);
+      } catch (err) {
+        showErr("adminLoginErr", "خطا در ارتباط با سرور.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "ورود به پنل مدیریت";
+      }
+    }
+
+    async function loadAdminData() {
+      const btn = document.getElementById("refreshAdminBtn");
+      if (btn) { btn.disabled = true; btn.textContent = "در حال دریافت..."; }
+      try {
+        const res = await apiCall({ action: "admin_login", password: adminPassword });
+        if (!res.ok) {
+          logoutAdmin();
+          showErr("adminLoginErr", res.error || "نیاز به ورود مجدد است.");
+          return;
+        }
+        renderAdminDashboard(res);
+      } catch (err) {
+        showToast("خطا در بروزرسانی اطلاعات");
+      } finally {
+        if (btn) { btn.disabled = false; btn.textContent = "بروزرسانی گزارش"; }
+      }
+    }
+
+    function renderAdminDashboard(res) {
+      document.getElementById("adminLoginCard").classList.add("hidden");
+      document.getElementById("adminDashboard").classList.remove("hidden");
+
+      if (res.config) {
+        applySiteConfig(res.config);
+        document.getElementById("cfgSiteTitle").value = res.config.siteTitle || "سامانه آزمون شبانه";
+        document.getElementById("cfgTelegramId").value = res.config.telegramId || "";
+      }
+
+      adminStudents = res.students || [];
+      renderStudentsList();
+    }
+
+    async function handleSaveConfig(e) {
+      e.preventDefault();
+      const btn = document.getElementById("saveCfgBtn");
+      btn.disabled = true;
+      btn.textContent = "در حال ذخیره...";
+      try {
+        const res = await apiCall({
+          action: "admin_save_config",
+          password: adminPassword,
+          siteTitle: document.getElementById("cfgSiteTitle").value,
+          telegramId: document.getElementById("cfgTelegramId").value
+        });
+        if (!res.ok) {
+          showToast(res.error || "خطا در ذخیره تنظیمات");
+          return;
+        }
+        applySiteConfig(res.config);
+        showToast("تنظیمات سایت ذخیره شد");
+      } catch (err) {
+        showToast("خطا در ارتباط با سرور");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "ذخیره تنظیمات";
+      }
+    }
+
+    async function handleSaveStudent(e) {
+      e.preventDefault();
+      showErr("adminFormErr", "");
+      const btn = document.getElementById("saveStudentBtn");
+      btn.disabled = true;
+      btn.textContent = "در حال ثبت...";
+
+      try {
+        const res = await apiCall({
+          action: "admin_save_student",
+          password: adminPassword,
+          id: editingStudentId,
+          name: document.getElementById("fName").value,
+          code: document.getElementById("fCode").value,
+          lesson: document.getElementById("fLesson").value,
+          questionCount: document.getElementById("fCount").value,
+          examDate: document.getElementById("fDate").value,
+          examTime: document.getElementById("fTime").value,
+          resetExam: editingStudentId ? document.getElementById("fResetExam").checked : true
+        });
+        if (!res.ok) {
+          showErr("adminFormErr", res.error || "خطا در ذخیره اطلاعات");
+          return;
+        }
+        adminStudents = res.students || [];
+        renderStudentsList();
+        resetAdminForm();
+        showToast("اطلاعات دانش‌آموز ذخیره شد");
+      } catch (err) {
+        showErr("adminFormErr", "خطا در ارتباط با سرور.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = editingStudentId ? "ذخیره تغییرات" : "ثبت دانش‌آموز";
+      }
+    }
+
+    function renderStudentsList() {
+      const box = document.getElementById("studentsListEl");
+      const sub = document.getElementById("studentsCountSub");
+      sub.textContent = `تعداد کل دانش‌آموزها: ${toFa(adminStudents.length)} نفر`;
+
+      if (!adminStudents.length) {
+        box.innerHTML = `<div class="alert alert-info" style="margin-bottom:0;">هنوز هیچ دانش‌آموزی اضافه نکرده‌اید. از فرم بالا اولین دانش‌آموز را ثبت کنید.</div>`;
+        return;
+      }
+
+      box.innerHTML = adminStudents.map(s => {
+        let badge = `<span class="pill pill-amber">در انتظار ثبت بازه</span>`;
+        let report = "";
+
+        if (s.revealedAt) {
+          badge = `<span class="pill pill-green">سوالات مشاهده شد</span>`;
+          const qs = (s.selectedQuestions || []).map(q => `سوال ${toFa(q)}`).join("، ");
+          report = `
+            <div class="alert alert-success" style="margin:10px 0 12px; padding:10px 14px;">
+              بازه اعلام‌شده: <strong>${toFa(s.rangeStart)} تا ${toFa(s.rangeEnd)}</strong>
+              &nbsp;|&nbsp; سوالات انتخابی: <strong>${qs}</strong>
+              &nbsp;|&nbsp; ساعت دقیق مشاهده: <strong>${formatTehranClock(s.revealedAt)}</strong>
+            </div>
+          `;
+        } else if (s.rangeStart !== null) {
+          badge = `<span class="pill pill-blue">بازه ثبت شد — منتظر ساعت آزمون</span>`;
+          const qs = (s.selectedQuestions || []).map(q => toFa(q)).join("، ");
+          report = `
+            <div class="alert alert-info" style="margin:10px 0 12px; padding:10px 14px;">
+              بازه اعلام‌شده: <strong>${toFa(s.rangeStart)} تا ${toFa(s.rangeEnd)}</strong>
+              &nbsp;|&nbsp; سوالات رزرو شده (مخفی از دانش‌آموز): <strong>${qs}</strong>
+            </div>
+          `;
+        }
+
+        return `
+          <div class="student-item">
+            <div class="student-top">
+              <div class="student-name">${escapeHtml(s.name)}</div>
+              ${badge}
+            </div>
+            <div class="student-details">
+              <span><strong>کد ورود:</strong> ${toFa(escapeHtml(s.code))}</span>
+              <span><strong>درس:</strong> ${escapeHtml(s.lesson)}</span>
+              <span><strong>زمان آزمون:</strong> ${formatJalali(s.examDate)} ساعت ${toFa(escapeHtml(s.examTime))}</span>
+              <span><strong>تعداد سوال:</strong> ${toFa(s.questionCount)}</span>
+            </div>
+            ${report}
+            <div class="student-actions">
+              <button class="btn btn-ghost btn-sm" onclick="editStudent('${escapeHtml(s.id)}')">ویرایش / آزمون جدید</button>
+              <button class="btn btn-ghost btn-sm" onclick="resetStudentExam('${escapeHtml(s.id)}')">ریست آزمون</button>
+              <button class="btn btn-danger-soft btn-sm" onclick="deleteStudent('${escapeHtml(s.id)}', '${escapeHtml(s.name)}')">حذف</button>
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function editStudent(id) {
+      const s = adminStudents.find(x => x.id === id);
+      if (!s) return;
+      editingStudentId = id;
+      document.getElementById("formTitleEl").textContent = `ویرایش / تنظیم آزمون جدید برای ${s.name}`;
+      document.getElementById("saveStudentBtn").textContent = "ذخیره تغییرات";
+      document.getElementById("cancelEditBtn").classList.remove("hidden");
+      document.getElementById("resetExamWrap").classList.remove("hidden");
+      document.getElementById("fResetExam").checked = true;
+
+      document.getElementById("fName").value = s.name;
+      document.getElementById("fCode").value = s.code;
+      document.getElementById("fLesson").value = s.lesson;
+      document.getElementById("fCount").value = s.questionCount;
+      document.getElementById("fDate").value = s.examDate || tehranTodayISO();
+      document.getElementById("fTime").value = s.examTime || "21:30";
+      updateJalaliPreview();
+
+      document.getElementById("studentFormCard").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function resetAdminForm() {
+      editingStudentId = null;
+      showErr("adminFormErr", "");
+      document.getElementById("formTitleEl").textContent = "افزودن دانش‌آموز جدید";
+      document.getElementById("saveStudentBtn").textContent = "ثبت دانش‌آموز";
+      document.getElementById("cancelEditBtn").classList.add("hidden");
+      document.getElementById("resetExamWrap").classList.add("hidden");
+      document.getElementById("fResetExam").checked = false;
+
+      document.getElementById("fName").value = "";
+      document.getElementById("fCode").value = "";
+      document.getElementById("fLesson").value = "";
+      document.getElementById("fCount").value = "2";
+      document.getElementById("fDate").value = tehranTodayISO();
+      document.getElementById("fTime").value = "21:30";
+      updateJalaliPreview();
+    }
+
+    async function resetStudentExam(id) {
+      if (!confirm("بازه و سوالات قبلی این دانش‌آموز پاک شود تا بتواند دوباره آزمون بدهد؟")) return;
+      try {
+        const res = await apiCall({ action: "admin_reset_student", password: adminPassword, id });
+        if (!res.ok) return showToast(res.error || "خطا");
+        adminStudents = res.students || [];
+        renderStudentsList();
+        showToast("آزمون دانش‌آموز ریست شد");
+      } catch (err) {
+        showToast("خطا در ارتباط با سرور");
+      }
+    }
+
+    async function deleteStudent(id, name) {
+      if (!confirm(`آیا از حذف «${name}» مطمئن هستید؟`)) return;
+      try {
+        const res = await apiCall({ action: "admin_delete_student", password: adminPassword, id });
+        if (!res.ok) return showToast(res.error || "خطا");
+        adminStudents = res.students || [];
+        renderStudentsList();
+        showToast("دانش‌آموز حذف شد");
+      } catch (err) {
+        showToast("خطا در ارتباط با سرور");
+      }
+    }
+
+    function generateRandomCode() {
+      const code = String(Math.floor(1000 + Math.random() * 9000));
+      document.getElementById("fCode").value = code;
+    }
+
+    function updateJalaliPreview() {
+      const val = document.getElementById("fDate").value;
+      document.getElementById("jalaliPreview").textContent = val ? `معادل شمسی: ${formatJalali(val)}` : "";
+    }
+
+    function logoutAdmin() {
+      adminPassword = "";
+      sessionStorage.removeItem("exam_admin_pass");
+      document.getElementById("adminDashboard").classList.add("hidden");
+      document.getElementById("adminLoginCard").classList.remove("hidden");
+    }
+
+    // ==================== مقداردهی اولیه ====================
+    (function init() {
+      const savedTitle = localStorage.getItem("exam_site_title");
+      if (savedTitle) applySiteConfig({ siteTitle: savedTitle });
+      document.getElementById("fDate").value = tehranTodayISO();
+      updateJalaliPreview();
+      if (activeStudentCode) {
+        refreshStudentStatus(false);
+      }
+    })();
+  </script>
+</body>
+</html>
